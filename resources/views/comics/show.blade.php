@@ -19,7 +19,9 @@
         <p>
           {!! $comic->description !!}
         </p>
+        <a href="{{ route('comics.index') }}"><< back</a>
       </div>
     </div>
   </section>
+
 @endsection
