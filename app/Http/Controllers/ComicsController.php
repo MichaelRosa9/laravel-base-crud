@@ -39,14 +39,17 @@ class ComicsController extends Controller
     {
         $data = $request->all();
         $new_comic = new Comic();
-        $new_comic->title = $data['title'];
-        $new_comic->slug = Str::slug($data['title'], '-');
+        /* $new_comic->title = $data['title'];
         $new_comic->description = $data['description'];
         $new_comic->thumbnail = $data['thumbnail'];
         $new_comic->price = $data['price'];
         $new_comic->series = $data['series'];
         $new_comic->sale_date = $data['sale_date'];
-        $new_comic->type = $data['type'];
+        $new_comic->type = $data['type']; */
+
+        $data['slug'] = Str::slug($data['title'], '-');
+        $new_comic->fill($data);
+
         $new_comic->save();
         
         return redirect()->route('comics.show', $new_comic);
@@ -75,7 +78,11 @@ class ComicsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::find($id);
+        if($comic){
+            return view('comics.edit', compact('comic'));
+        }
+        abort('404', 'Element not found');
     }
 
     /**
@@ -85,9 +92,15 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($data['title'], '-');
+        $comic->update($data);
+
+        return redirect()->route('comics.show', $comic);
+
     }
 
     /**
@@ -96,8 +109,8 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
     }
 }

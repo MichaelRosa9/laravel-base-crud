@@ -4,12 +4,12 @@
 
 <h1>Comics</h1>
 <section>
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>ID</th>
         <th>Title</th>
-        <th>Action</th>
+        <th colspan="4">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -21,8 +21,13 @@
           <td>
             <a href="{{ route('comics.show', $comic) }}" class="btn btn-success">SHOW</a>
           </td>
-          <td>EDIT</td>
-          <td>DELETE</td>
+          <td><a href="{{ route('comics.edit', $comic) }}" class="btn btn-primary">EDIT</a></td>
+          <td><form action="{{ route('comics.destroy', $comic) }}">@csrf
+            @method('DELETE')
+            <button class="btn btn-danger">
+              DELETE
+            </button>
+          </form></td>
         </tr>  
 
       @endforeach

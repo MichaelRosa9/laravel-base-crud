@@ -20,6 +20,7 @@
           {!! $comic->description !!}
         </p>
         <a href="{{ route('comics.index') }}"><< back</a>
+        <a href="{{ route('comics.edit', $comic) }}" class="btn btn-primary">EDIT</a>
       </div>
     </div>
   </section>
