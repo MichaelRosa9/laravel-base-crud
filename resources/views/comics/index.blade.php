@@ -19,7 +19,7 @@
           <td>{{ $comic->title }}</td>
           <td>{{ $comic->type }}</td>
           <td>
-            <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-success">SHOW</a>
+            <a href="{{ route('comics.show', $comic) }}" class="btn btn-success">SHOW</a>
           </td>
           <td>EDIT</td>
           <td>DELETE</td>

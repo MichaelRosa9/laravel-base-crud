@@ -1,6 +1,7 @@
 <?php
 
 use App\Comic;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class ComicTableSeeder extends Seeder
