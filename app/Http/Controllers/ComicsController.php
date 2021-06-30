@@ -58,13 +58,13 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Comic $comic)
+    public function show($id)
     {
-        //$comic = Comic::find($id);
+        $comic = Comic::find($id);
         if($comic){
             return view('comics.show', compact('comic'));
         }
-        abort('404');
+        abort('404', 'Element not found');
     }
 
     /**

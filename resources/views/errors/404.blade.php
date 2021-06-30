@@ -6,6 +6,7 @@
       Errore 404
     </h1>
     <h3>Pagina non trovata</h3>
+    <p>{{ $exeption->getMessage() }}</p>
   </div>
     
 @endsection
