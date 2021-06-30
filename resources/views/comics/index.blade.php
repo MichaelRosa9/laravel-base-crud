@@ -3,6 +3,14 @@
 @section('content')
 
 <h1>Comics</h1>
+{{-- verifica la presenza di un elemento eliminato --}}
+@if(session('deleted'))
+<div class="alert alert-success" role="alert">
+  <strong>{{ session('deleted') }}</strong>
+  Eliminato correttamente
+</div>
+@endif
+
 <section>
   <table class="table">
     <thead>
