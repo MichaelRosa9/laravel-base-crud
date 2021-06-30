@@ -15,5 +15,5 @@ class Comic extends Model
         'price',
         'slug',
         'thumbnail',
-    ]
+    ];
 }
